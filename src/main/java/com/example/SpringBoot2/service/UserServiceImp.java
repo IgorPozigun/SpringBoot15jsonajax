@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImp implements UserService {
@@ -69,7 +70,7 @@ public class UserServiceImp implements UserService {
      addAndCreate(user, roles);
     }
 
-    private void addAndCreate(User user,
+    public void addAndCreate(User user,
                               String[] roles){
         String roleName = null;
         for (String s : roles) {
@@ -83,6 +84,23 @@ public class UserServiceImp implements UserService {
 
         userRepository.save(user);
 
+    }
+    public List<Role> findRolesByName(String roleName) {
+        List<Role> roles = new ArrayList<>();
+        for (Role role : getAllRoles()) {
+            if (roleName.contains(role.getName()))
+                roles.add(role);
+        }
+        return roles;
+    }
+    public boolean saveUser (User user) {
+        User userFromDB = userRepository.findByFirstName(user.getUsername());
+        if (userFromDB != null) {
+            return false;
+        }
+        user.setPassword((user.getPassword()));
+        userRepository.save(user);
+        return true;
     }
 }
 

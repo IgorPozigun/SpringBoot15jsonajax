@@ -1,6 +1,7 @@
 package com.example.SpringBoot2.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,7 +20,7 @@ import javax.persistence.Table;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
-
+@Builder
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor

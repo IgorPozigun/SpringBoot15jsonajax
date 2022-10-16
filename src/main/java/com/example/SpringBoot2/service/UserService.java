@@ -18,10 +18,9 @@ public interface UserService {
 
     List<Role> getAllRoles();// показать все role
 
-    Role findByRoleName(String role);
+    List<Role> findRolesByName(String roleName);
 
-
-//    public List<Role> findRolesByName(String roleName);
+    boolean saveUser(User user);
 
 
 }

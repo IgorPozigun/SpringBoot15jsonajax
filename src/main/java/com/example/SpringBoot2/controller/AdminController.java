@@ -70,11 +70,11 @@ public class AdminController {
         return "redirect:/admin";
     }
 //
-//    @GetMapping("/edit/{id}")
-//    public String getUserById(@PathVariable() Long id, Model model) {
-//        model.addAttribute("edit", userService.getUserById(id));
-//        return "edit";
-//    }
+    @GetMapping("/edit/{id}")
+    public String getUserById(@PathVariable() Long id, Model model) {
+        model.addAttribute("edit", userService.getUserById(id));
+        return "edit";
+    }
 
     @PostMapping("/edit")
     public String updateListAllUsers(@ModelAttribute() User user,
