@@ -21,8 +21,8 @@
     <div class="container-fluid">
         <div>
             <span class="navbar-text text-white font-weight-bold"  th:text="${currentUser.getEmail()}"></span>
-            <span class="navbar-text text-white">with roles:</span>
-            <span class="navbar-text text-white" th:text="${currentUser.getRolesInfo()}"></span>
+            <span class="navbar-text text-white">with roles</span>
+            <span class="navbar-text text-white" th:text="${currentUser.getRolesString()}"></span>
         </div>
         <form th:action="@{/logout}" method="post">
             <button type="submit" class="btn btn-dark">Logout</button>
@@ -75,11 +75,11 @@
                             <tbody>
                             <tr>
                                 <td th:text="${currentUser.getId}"></td>
-                                <td th:text="${currentUser.getFirstName}"></td>
-                                <td th:text="${currentUser.getLastName}"></td>
+                                <td th:text="${currentUser.getUsername}"></td>
+                                <td th:text="${currentUser.getSurname}"></td>
                                 <td th:text="${currentUser.getAge}"></td>
                                 <td th:text="${currentUser.getEmail}"></td>
-                                <td th:text="${currentUser.getPassword}"></td>
+                                <td th:text="${currentUser.getRolesString()}"></td>
                             </tr>
                             </tbody>
                         </table>
@@ -92,3 +92,57 @@
     <br>
 </div>
 </body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+
+<!--</head>-->
+<!--<body>-->
+<!--<br>-->
+<!--<h1>Your information</h1>-->
+<!--<table border="1">-->
+<!--    <tr>-->
+<!--        <th>Id</th>-->
+<!--        <th>Name</th>-->
+<!--        <th>Surname</th>-->
+<!--        <th>Age</th>-->
+<!--        <th>Email</th>-->
+<!--        <th>Role</th>-->
+<!--    </tr>-->
+<!--    <tbody>-->
+<!--    <tr>-->
+<!--        <td th:utext="${user.id}"></td>-->
+<!--        <td th:utext="${user.username}"></td>-->
+<!--        <td th:utext="${user.surname}"></td>-->
+<!--        <td th:utext="${user.age}"></td>-->
+<!--        <td th:utext="${user.email}"></td>-->
+<!--        <td th:utext="${user.getRolesString()}"></td>-->
+<!--    </tr>-->
+<!--    </tbody>-->
+<!--    </table>-->
+<!--    <br><br>-->
+<!--    <form th:action="@{/logout}" method="post">-->
+<!--        <button type="submit">Sign Out</button>-->
+<!--    </form>-->
+<!--</body>-->
+<!--</html>-->

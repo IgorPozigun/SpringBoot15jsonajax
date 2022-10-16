@@ -15,18 +15,18 @@ async function getUsers() {
                         data.forEach((user) => {
                             temp += "<tr>";
                             temp += "<td>" + user.id + "</td>";
-                            temp += "<td>" + user.firstname + "</td>";
-                            temp += "<td>" + user.lastname + "</td>";
+                            temp += "<td>" + user.username + "</td>";
+                            temp += "<td>" + user.surname + "</td>";
                             temp += "<td>" + user.age + "</td>";
                             temp += "<td>" + user.email + "</td>";
                             temp += `<td>${user.roles.map(roles => roles.name === 'ROLE_USER' ? 'USER' : 'ADMIN')}</td>`;
                             temp += `<td><button type="button" class="btn btn-info" style="color: white" data-bs-toggle="modal" data-bs-target="#editModal" data-bs-userId=${user.id} data-bs-userName=${user.username} data-bs-userSurname=${user.surname} data-bs-userAge=${user.age} data-bs-userEmail=${user.email} data-bs-userEmail=${user.roles} data-bs-userEmail=${user.password}>Edit</button></td>`
-                            temp += `<td><button type="button" class="btn btn-danger" style="color: white" 
-                                                data-bs-toggle="modal" data-bs-target="#deleteModal" 
-                                                data-bs-userId=${user.id} data-bs-userName=${user.firstname} 
-                                                data-bs-userSurname=${user.lastname} data-bs-userAge=${user.age} 
+                            temp += `<td><button type="button" class="btn btn-danger" style="color: white"
+                                                data-bs-toggle="modal" data-bs-target="#deleteModal"
+                                                data-bs-userId=${user.id} data-bs-userName=${user.username}
+                                                data-bs-userSurname=${user.surname} data-bs-userAge=${user.age}
                                                 data-bs-userEmail=${user.email}>Delete</button></td></tr>`
-                            console.log("from get user " + user.lastname)
+                            console.log("from get user " + user.username)
                         })
 
                         //close for loop

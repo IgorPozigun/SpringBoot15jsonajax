@@ -1,18 +1,12 @@
-package com.example.SpringBoot2.controller;
-
-import com.example.SpringBoot2.forms.UserFormCreateApi;
-import com.example.SpringBoot2.model.User;
-import com.example.SpringBoot2.service.UserService;
+package ru.kata.spring.boot_security.demo.controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import ru.kata.spring.boot_security.demo.entity.User;
+import ru.kata.spring.boot_security.demo.forms.UserFormCreateApi;
+import ru.kata.spring.boot_security.demo.service.UserService;
+
 import java.util.List;
 
 @RestController
@@ -27,25 +21,21 @@ public class MyRestController {
 
     @GetMapping("")
     public ResponseEntity<List<User>> getAllUsers() {
-        return new ResponseEntity<>(userService.showAllUsers(), HttpStatus.OK);
+        return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
 
     }
 
     @GetMapping("/{id}")
     public User getOneUser(@PathVariable("id") Long id) {
-        return userService.getUserById(id);
+        return userService.findById(id);
     }
-
-
-
-
 
     @PostMapping()
     public UserFormCreateApi createNewUser(@RequestBody UserFormCreateApi user) {
 
         User newUser = User.builder()
-                .firstName(user.getFirstName())
-                .lastName(user.getLastName())
+                .username(user.getUsername())
+                .surname(user.getSurname())
                 .email(user.getEmail())
                 .age(user.getAge())
                 .password(user.getPassword())
@@ -60,19 +50,19 @@ public class MyRestController {
     public UserFormCreateApi updateUser(@RequestBody UserFormCreateApi user) {
         User newUser = User.builder()
                 .id(user.getId())
-                .firstName(user.getFirstName())
-                .lastName(user.getLastName())
+                .username(user.getUsername())
+                .surname(user.getSurname())
                 .email(user.getEmail())
                 .age(user.getAge())
                 .password(user.getPassword())
                 .build();
         newUser.setRoles(userService.findRolesByName(user.getRoles()));
-        userService.saveUser(newUser);
+        userService.update(newUser);
         return user;
     }
     @DeleteMapping("/{id}")
     public String deleteUser(@PathVariable("id") Long id) {
-        userService.deleteUser(id);
+        userService.deleteUserById(id);
         return "OK";
     }
 }

@@ -1,7 +1,7 @@
 // Create new user
 
-const firstName = document.getElementById('firstName')
-const lastName = document.getElementById('lastName')
+const username = document.getElementById('username')
+const surname = document.getElementById('surname')
 const age = document.getElementById('age')
 const email = document.getElementById('email')
 const password = document.getElementById('password')
@@ -20,8 +20,8 @@ addForm.addEventListener('submit', e => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(user = {
-            firstName: firstName.value,
-            lastName: lastName.value,
+            username: username.value,
+            surname: surname.value,
             age: age.value,
             email: email.value,
             password: password.value,

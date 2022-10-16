@@ -8,7 +8,7 @@ let idFromButton
 deleteModal.addEventListener('show.bs.modal', event => {
     button = event.relatedTarget
     idFromButton = button.getAttribute('data-bs-userId')
-    const deleteUserName = button.getAttribute('data-bs-firstName')
+    const deleteUserName = button.getAttribute('data-bs-userName')
     const deleteUserSurname = button.getAttribute('data-bs-userSurname')
     const deleteUserAge = button.getAttribute('data-bs-userAge')
     const deleteUserEmail = button.getAttribute('data-bs-userEmail')
